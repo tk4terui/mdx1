@@ -22,7 +22,7 @@
         <vssd:VirtualSystemIdentifier>000000</vssd:VirtualSystemIdentifier>
         <vssd:VirtualSystemType>vmx-18</vssd:VirtualSystemType>
       </System>
-     <Item>
+      <Item>
         <rasd:Address>0</rasd:Address>
         <rasd:Description>SCSI Controller</rasd:Description>
         <rasd:ElementName>scsiController0</rasd:ElementName>
@@ -38,6 +38,12 @@
         <rasd:Parent>3</rasd:Parent>
         <rasd:ResourceType>17</rasd:ResourceType>
       </Item>
-   </VirtualHardwareSection>
+      <vmw:Config ovf:required="false" vmw:key="firmware" vmw:value="efi"/>
+      <vmw:Config ovf:required="false" vmw:key="tools.syncTimeWithHost" vmw:value="true"/>
+      <vmw:Config ovf:required="false" vmw:key="tools.syncTimeWithHostAllowed" vmw:value="true"/>
+      <vmw:Config ovf:required="false" vmw:key="powerOpInfo.suspendType" vmw:value="soft"/>
+      <vmw:Config ovf:required="false" vmw:key="nestedHVEnabled" vmw:value="false"/>
+      <vmw:Config ovf:required="false" vmw:key="bootOptions.efiSecureBootEnabled" vmw:value="false"/>
+    </VirtualHardwareSection>
   </VirtualSystem>
 </Envelope>
