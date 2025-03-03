@@ -10,8 +10,8 @@
   </DiskSection>
   <VirtualSystem ovf:id="vm">
     <Info>A virtual machine</Info>
-    <Name>012_opensuse_from_ovf</Name>
-    <OperatingSystemSection ovf:id="83" vmw:osType="opensuse64Guest">
+    <Name>022_ubuntu_from_ovf</Name>
+    <OperatingSystemSection ovf:id="94" vmw:osType="ubuntu64Guest">
       <Info>The kind of installed guest operating system</Info>
     </OperatingSystemSection>
     <VirtualHardwareSection>
