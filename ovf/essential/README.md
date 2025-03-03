@@ -23,8 +23,8 @@ rm src.vmdk
 ~~~
 
 # 参考URL
-https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/5/html/virtualization/sect-virtualization-tips_and_tricks-using_qemu_img#sect-Virtualization-Tips_and_tricks-Using_qemu_img
-https://gitlab.com/qemu-project/qemu/-/issues/2532
-https://gitlab.com/qemu-project/qemu/-/issues/2086
-https://bugs.launchpad.net/qemu/+bug/1828508
-https://x.com/JakubJirutka/status/1233894997566611462
+- [qimg-imgの使用](https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/5/html/virtualization/sect-virtualization-tips_and_tricks-using_qemu_img#sect-Virtualization-Tips_and_tricks-Using_qemu_img)
+- [empty vmdk disk created by qemu-img cann't import to vmware ESXi or Workstation](https://gitlab.com/qemu-project/qemu/-/issues/2532)
+- [qemu-img created VMDK files lead to "Unsupported or invalid disk type 7" on ESXi](https://gitlab.com/qemu-project/qemu/-/issues/2086)
+- [qemu-img created VMDK files lead to "Unsupported or invalid disk type 7"](https://bugs.launchpad.net/qemu/+bug/1828508)
+- [vmdkのXの投稿](https://x.com/JakubJirutka/status/1233894997566611462)
