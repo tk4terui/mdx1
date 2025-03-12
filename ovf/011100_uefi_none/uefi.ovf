@@ -10,8 +10,8 @@
   </DiskSection>
   <VirtualSystem ovf:id="vm">
     <Info>A virtual machine</Info>
-    <Name>001_vm_from_basic_bios_ovf</Name>
-    <OperatingSystemSection ovf:id="102" vmw:osType="otherGuest64">
+    <Name>011100_skeltonuefi_none_00_00</Name>
+    <OperatingSystemSection ovf:id="101" vmw:osType="otherLinux64Guest">
       <Info>The kind of installed guest operating system</Info>
     </OperatingSystemSection>
     <VirtualHardwareSection>
@@ -55,9 +55,10 @@
         <rasd:ResourceSubType>vmware.cdrom.remotepassthrough</rasd:ResourceSubType>
         <rasd:ResourceType>15</rasd:ResourceType>
       </Item>
-      <vmw:Config ovf:required="false" vmw:key="firmware" vmw:value="bios"/>
+      <vmw:Config ovf:required="false" vmw:key="firmware" vmw:value="efi"/>
       <vmw:Config ovf:required="false" vmw:key="tools.syncTimeWithHost" vmw:value="true"/>
       <vmw:Config ovf:required="false" vmw:key="powerOpInfo.suspendType" vmw:value="soft"/>
-   </VirtualHardwareSection>
+      <vmw:Config ovf:required="false" vmw:key="bootOptions.efiSecureBootEnabled" vmw:value="true"/>
+    </VirtualHardwareSection>
   </VirtualSystem>
 </Envelope>
