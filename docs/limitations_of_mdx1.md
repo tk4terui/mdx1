@@ -9,7 +9,8 @@ mdx1を利用する上で注意すべき制限のメモ
 
 ## TPMをOVFに追加する方法
 - vSphereでWindows 11をインストールする方法: https://www.vmware.com/docs/windows-11-support-on-vsphere
-- vSphere 8.0でTPMを有効化する方法: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-sdks-tools/8-0/ovf-tool-user-s-guide/examples-of-ovf-tool-syntax/modifying-an-ovf-package/tpm-as-a-virtual-device-in-ovf.html
+- vSphere 8.0のVMでTPMを有効化する方法: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-sdks-tools/8-0/ovf-tool-user-s-guide/examples-of-ovf-tool-syntax/modifying-an-ovf-package/tpm-as-a-virtual-device-in-ovf.html
+- vSphereでTPMのキープロバイダを有効化する方法: https://techdocs.broadcom.com/jp/ja/vmware-cis/vsphere/vsphere/7-0/vsphere-security-7-0/configuring-and-managing-vsphere-native-key-provider/configure-a-vsphere-native-key-provider.html
 - OVFを編集して直接TPMデバイスを追加する方法
 
 ```xml
