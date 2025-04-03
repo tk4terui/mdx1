@@ -95,16 +95,16 @@ graph TD
     A[OS選定スタート] --> B{Lustreを使用しますか?}
     B -- はい --> C{コミュニティドライバを使用しますか?}
     B -- いいえ --> D{InfiniBandを使用しますか?}
-    C -- はい --> E[Ubuntu, SLES/openSUSE, RHEL/Rocky]
-    C -- いいえ --> F[Ubuntu, Rocky]
+    C -- はい --> E[サポートOS: Ubuntu, SLES/openSUSE, RHEL/Rocky]
+    C -- いいえ --> F[サポートOS: Ubuntu, Rocky]
     D -- はい --> G{インボックスドライバを使用しますか?}
     D -- いいえ --> H{セキュアブートを使用しますか?}
-    G -- はい --> I[Ubuntu, SLES/openSUSE, RHEL/CentOS/Rocky, Alpine, Windows]
+    G -- はい --> I[サポートOS: Ubuntu, SLES/openSUSE, RHEL/CentOS/Rocky, Alpine, Windows]
     G -- いいえ --> H{セキュアブートを使用しますか?}
-    H -- はい --> J[Ubuntu, SLES/openSUSE, RHEL/CentOS/Rocky, Oracle Linux, OPENEULER, Fedora, Debian, Windows]
-    H -- いいえ --> K{ストレージネットワークを使いますか?}
-    K -- はい --> L[RPM/DEB Buid Support Community Linux, FreeBSD, Windows]
-    K -- いいえ --> M[VMware Supported OS]
+    H -- はい --> J[サポートOS: Ubuntu, SLES/openSUSE, RHEL/CentOS/Rocky, Oracle Linux, OPENEULER, Fedora, Debian, Windows]
+    H -- いいえ --> K{ストレージネットワークを使用しますか?}
+    K -- はい --> L[サポートOS: RPM/DEB Buid Support Community Linux, FreeBSD, Windows]
+    K -- いいえ --> M[サポートOS: VMware Supported OS]
 ```
 
 # フローチャート2: インストール方法
@@ -112,11 +112,11 @@ graph TD
 
 ```mermaid
 graph TD
-    A[インストール方法について選定スタート] --> B{ISOイメージを使いますか?}
-    B -- はい --> C[仮想マシンテンプレートISO_imageをでプロして、選定したOSのISOイメージをマウントしてインストール]
+    A[インストール方法選定スタート] --> B{ISOイメージを使用しますか?}
+    B -- はい --> C[ISOイメージを使用してインストール]
     B -- いいえ --> D{コミュニティ提供の仮想ディスクイメージを使用しますか?}
-    D -- はい --> E[Ubuntu, SLES/openSUSE, RHEL/Rockyのqcowイメージからインポート]
-    D -- いいえ --> F[mdx1の仮想マシンテンプレートからデプロイ]
+    D -- はい --> E[仮想ディスクイメージからインストール: Ubuntu, SLES/openSUSE, RHEL/Rocky]
+    D -- いいえ --> F[mdx1の仮想マシンテンプレートからインストール]
 ```
 
 # 備考
