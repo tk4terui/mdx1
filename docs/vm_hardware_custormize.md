@@ -1,3 +1,11 @@
+- [はじめに](#はじめに)
+- [VMの設定に関する制約](#vmの設定に関する制約)
+  - [ダッシュボード](#ダッシュボード)
+  - [OVFファイル](#ovfファイル)
+    - [OVFからカスタマイズ可能な項目](#ovfからカスタマイズ可能な項目)
+    - [OVFファイルで設定しても反映できない項目](#ovfファイルで設定しても反映できない項目)
+      - [TPMについて](#tpmについて)
+        - [TPMをOVFに追加する方法](#tpmをovfに追加する方法)
 
 # はじめに
 # VMの設定に関する制約
@@ -22,7 +30,7 @@ VM作成時の制約は、ダッシュボードの操作、OVFの編集で異な
    1.  ゲストOSファミリ: Windows, Linux, その他
    2.  ゲストOSバージョン
 
-上記のうち、mdx1のダッシュボード上で設定:wqして、事後に変更不可能なのは、1-5である。
+上記のうち、mdx1のダッシュボード上で設定して、事後に変更不可能なのは、1-5である。
 1-4の仮想ディスクの容量について、増量は可能で、縮退は不可能である。
 1-5について、1st接続の仮想ディスクのみで、仮想ディスクの追加は、デプロイ後の構成変更空のみ可能である。
 それ以外の設定を変更させようとする場合は、以下のようにOVFのエクスポート/インポートの操作が必要になる。
@@ -96,3 +104,24 @@ Linuxカーネルのバージョンは5.xまでで、Rocky LinuxやAlmaLinuxが�
 インポート時に設定可能な項目については、最小限の値にしておくか、不要であるなら記載しないこと。
 
 仮想TPMについては、ESXi側に仮想TPMのキープロバイダが設定されていないためである。Windows 11のようなTPM必須のOSを使用することができない。
+
+#### TPMについて
+- TPMモジュールは使用できない。
+- OVFにItem要素で手動で追加してからインポートしようとしても失敗する。
+- キープロバイダが構成されたら、将来的に利用できる可能性はあるが、現状はできない _2025-03-14時点_
+
+##### TPMをOVFに追加する方法
+- vSphereでWindows 11をインストールする方法: https://www.vmware.com/docs/windows-11-support-on-vsphere
+- vSphere 8.0のVMでTPMを有効化する方法: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-sdks-tools/8-0/ovf-tool-user-s-guide/examples-of-ovf-tool-syntax/modifying-an-ovf-package/tpm-as-a-virtual-device-in-ovf.html
+- vSphereでTPMのキープロバイダを有効化する方法: https://techdocs.broadcom.com/jp/ja/vmware-cis/vsphere/vsphere/7-0/vsphere-security-7-0/configuring-and-managing-vsphere-native-key-provider/configure-a-vsphere-native-key-provider.html
+- OVFを編集して直接TPMデバイスを追加する方法
+
+```xml
+<Item ovf:required="false">
+  <rasd:AutomaticAllocation>false</rasd:AutomaticAllocation>
+  <rasd:ElementName>Virtual TPM</rasd:ElementName>
+  <rasd:InstanceID>13</rasd:InstanceID>
+  <rasd:ResourceSubType>vmware.vtpm</rasd:ResourceSubType>
+  <rasd:ResourceType>1</rasd:ResourceType>
+</Item>
+```
