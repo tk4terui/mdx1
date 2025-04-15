@@ -8,7 +8,7 @@
   - [実行環境](#実行環境)
 - [方法](#方法)
   - [最小容量のVMDKの仮想ディスクを作成する](#最小容量のvmdkの仮想ディスクを作成する)
-  - [QCOW2からVMDKへ変換](#qcow2からvmdkへ変換)
+  - [QCOW2からVMDK](#qcow2からvmdk)
     - [Ubuntu](#ubuntu)
     - [openSUSE](#opensuse)
     - [Rocky](#rocky)
@@ -100,7 +100,7 @@ VMDKの仕様上、最小限の容量は64KiBである。
 - `vmdk-convert`で、フォーマットを校正する。
 - 不要なVMDKを削除する
 
-## QCOW2からVMDKへ変換
+## QCOW2からVMDK
 ディストリビューションから提供されている、クラウド用イメージをVMDKに変換する
 
 ESXi用に必要なのは、以下のオプションである。
