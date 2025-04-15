@@ -13,6 +13,9 @@
     - [openSUSE](#opensuse)
     - [Rocky](#rocky)
   - [QCOW2からVHDX](#qcow2からvhdx)
+    - [Ubuntu](#ubuntu-1)
+    - [openSUSE](#opensuse-1)
+    - [Rocky](#rocky-1)
 - [参考URL](#参考url)
 
 # はじめに
@@ -101,24 +104,43 @@ VMDKの仕様上、最小限の容量は64KiBである。
 - 不要なVMDKを削除する
 
 ## QCOW2からVMDK
-ディストリビューションから提供されている、クラウド用イメージをVMDKに変換する
+ディストリビューションから提供されているOpenStack用QCOW2をVMDKに変換する。
 
-ESXi用に必要なのは、以下のオプションである。
-- adapter_type=lsilogic
-- subformat=streamOptimized
-- compat6
+`qemu-img convert -p -f qcow2 -O vmdk -o adapter_type=lsilogic,subformat=streamOptimized,compat6 変換元QCOW2イメージ 変換先VMDK`
+
+ESXi用VMDKのオプションの意味は以下の通り。
+- adapter_type=lsilogic: デフォルトだとIDEを使用とするので指定する
+- subformat=streamOptimized,compat6: デフォルトだとVMware4の古いVMDKになるため、ESXi6以降の新しいフォーマットを指定する
+
+mdx1の場合は、ESXi用のVMDKのほかにOVFが必要になるが、こちらは別途用意する。
+
+各ディストリビューションの適用例は以下の通りで、出力先の`disk-0.vmdk`はmdx1でOVFを作成した際の既定のファイル名
 
 ### Ubuntu
 `qemu-img convert -p -f qcow2 -O vmdk -o adapter_type=lsilogic,subformat=streamOptimized,compat6 jammy-server-cloudimg-amd64.img disk-0.vmdk`
 
 ### openSUSE
-`qemu-img convert -p -f qcow2 -O vmdk -o adapter_type=lsilogic,subformat=streamOptimized,compat6 openSUSE-Leap-15.6-Minimal-VM.x86_64-Cloud.qcow2 openSUSE-Leap-15.6-Minimal-VM.x86_64-Cloud.vmdk`
+`qemu-img convert -p -f qcow2 -O vmdk -o adapter_type=lsilogic,subformat=streamOptimized,compat6 openSUSE-Leap-15.6-Minimal-VM.x86_64-Cloud.qcow2 disk-0.vmdk`
 
 ### Rocky
 `qemu-img convert -p -f qcow2 -O vmdk -o adapter_type=lsilogic,subformat=streamOptimized,compat6 Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 disk-0.vmdk`
 
 ## QCOW2からVHDX
+Hyper-V用のVHDXに変換する場合は、以下のコマンドである
 
+`qemu-img convert -p -f qcow2 -O vhdx -o subformat=dynamic 変換元QCOW2イメージ 変換先VHDX`
+
+オプションの意味は以下の通り
+- subformat=dynamic: 動的VHDXを有効にする
+
+### Ubuntu
+`qemu-img convert -p -f qcow2 -O vhdx -o subformat=dynamic jammy-server-cloudimg-amd64.img os.vhdx`
+
+### openSUSE
+`qemu-img convert -p -f qcow2 -O vhdx -o subformat=dynamic openSUSE-Leap-15.6-Minimal-VM.x86_64-Cloud.qcow2 os.vhdx`
+
+### Rocky
+`qemu-img convert -p -f qcow2 -O vhdx -o subformat=dynamic Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 os.vhdx`
 
 # 参考URL
 - [qimg-imgの使用](https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/5/html/virtualization/sect-virtualization-tips_and_tricks-using_qemu_img#sect-Virtualization-Tips_and_tricks-Using_qemu_img)
