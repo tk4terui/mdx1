@@ -16,6 +16,9 @@
     - [Ubuntu](#ubuntu-1)
     - [openSUSE](#opensuse-1)
     - [Rocky](#rocky-1)
+  - [VHDXからVMDK](#vhdxからvmdk)
+  - [VMDKからQCOW2](#vmdkからqcow2)
+  - [VMDKからVHDX](#vmdkからvhdx)
 - [参考URL](#参考url)
 
 # はじめに
@@ -106,7 +109,7 @@ VMDKの仕様上、最小限の容量は64KiBである。
 ## QCOW2からVMDK
 ディストリビューションから提供されているOpenStack用QCOW2をVMDKに変換する。
 
-`qemu-img convert -p -f qcow2 -O vmdk -o adapter_type=lsilogic,subformat=streamOptimized,compat6 変換元QCOW2イメージ 変換先VMDK`
+`qemu-img convert -p -f qcow2 -O vmdk -o adapter_type=lsilogic,subformat=streamOptimized,compat6 変換元QCOW2 変換先VMDK`
 
 ESXi用VMDKのオプションの意味は以下の通り。
 - adapter_type=lsilogic: デフォルトだとIDEを使用とするので指定する
@@ -128,7 +131,7 @@ mdx1の場合は、ESXi用のVMDKのほかにOVFが必要になるが、こち�
 ## QCOW2からVHDX
 Hyper-V用のVHDXに変換する場合は、以下のコマンドである
 
-`qemu-img convert -p -f qcow2 -O vhdx -o subformat=dynamic 変換元QCOW2イメージ 変換先VHDX`
+`qemu-img convert -p -f qcow2 -O vhdx -o subformat=dynamic 変換元QCOW2 変換先VHDX`
 
 オプションの意味は以下の通り
 - subformat=dynamic: 動的VHDXを有効にする
@@ -142,10 +145,30 @@ Hyper-V用のVHDXに変換する場合は、以下のコマンドである
 ### Rocky
 `qemu-img convert -p -f qcow2 -O vhdx -o subformat=dynamic Rocky-9-GenericCloud-Base.latest.x86_64.qcow2 os.vhdx`
 
+## VHDXからVMDK
+Hyper-V用のVHDXから、VMDKに変換する場合
+
+`qemu-img convert -p -f vhdx -O vmdk -o adapter_type=lsilogic,subformat=streamOptimized,compat6 変換元VHDX 変換先VMDK`
+
+QCOW2 -> VHDX -> VMDKも可能
+
+## VMDKからQCOW2
+mdx1からエクスポートしたVMDkから、QCOW2に変換する場合
+
+`qemu-img convert -p -f vmdk -O qcow2 変換元VMDK 変換先QCOW2`
+
+## VMDKからVHDX
+mdx1からエクスポートしたVMDkから、QCOW2に変換する場合
+
+`qemu-img convert -p -f vmdk -O vhdx -o subformat=dynamic 変換元VMDK 変換先VHDX`
+
 # 参考URL
+- [Converting between image formats][Converting between image formats](http://ocs.openstack.org/image-guide/convert-images.html)
 - [qimg-imgの使用](https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/5/html/virtualization/sect-virtualization-tips_and_tricks-using_qemu_img#sect-Virtualization-Tips_and_tricks-Using_qemu_img)
 - [empty vmdk disk created by qemu-img cann't import to vmware ESXi or Workstation](https://gitlab.com/qemu-project/qemu/-/issues/2532)
 - [qemu-img created VMDK files lead to "Unsupported or invalid disk type 7" on ESXi](https://gitlab.com/qemu-project/qemu/-/issues/2086)
 - [qemu-img created VMDK files lead to "Unsupported or invalid disk type 7"](https://bugs.launchpad.net/qemu/+bug/1828508)
 - [vmdkのXの投稿](https://x.com/JakubJirutka/status/1233894997566611462)
+
+
 
