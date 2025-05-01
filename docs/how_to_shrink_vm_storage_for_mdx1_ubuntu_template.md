@@ -104,6 +104,8 @@ VMをエクスポートして、縮退後の仮想ストレージのみの仮想
       1. 変更前: `<Disk ovf:capacity="40" ovf:capacityAllocationUnits="byte * 2^30" ovf:diskId="vmdisk1" ovf:fileRef="file1" ovf:format="http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized"/>`
       2. 変更後: `<Disk ovf:capacity="10" ovf:capacityAllocationUnits="byte * 2^30" ovf:diskId="vmdisk1" ovf:fileRef="file1" ovf:format="http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized"/>`
 4. VMのインポートで、OVFファイルと、`disk-0.vmdk`を選択する
+   1. インポート時のCPUパック数に制約はないので、1にしておく(使用リソースの最小化)
+   2. ネットワークに指定は無し。指定されたネットワークによって、OVFは自動設定される。
 5. インポート後のVMの仮想ストレージ1のサイズが10GiBとなっていることを確認する
 
 #### 該当行
