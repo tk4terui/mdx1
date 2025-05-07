@@ -1,4 +1,3 @@
-
 - ホスト名: ubuntu-2204
 - スワップ: 有効
   - スワップ方法: スワップファイル
@@ -22,13 +21,13 @@
   - マウントのオンオフは`/etc/fstab`と`lustre_client`を有効にする必要がある
 - OpenMPI: インストール済み
   - バージョン: 4.1.5a1
-  - インストールパス: /usr/mpi/gcc/openmpi-4.1.5a1
+  - インストールパス: `/usr/mpi/gcc/openmpi-4.1.5a1`
   - PATHには未定義
 - OpenMPI用のベンチマークソフト: インストール済み
-  - インストールパス: /usr/mpi/gcc/openmpi-4.1.5a1/tests
+  - インストールパス: `/usr/mpi/gcc/openmpi-4.1.5a1/tests`
   - imb
   - osu-micro-benchmark
-- マシン固有のID
+- マシン固有のIDがテンプレートで共通 (要確認)
   - machine-id
   - disk-id
   - network-id
