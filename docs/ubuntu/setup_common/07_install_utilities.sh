@@ -20,4 +20,4 @@ apt install -y -qq 7zip \
                    pdsh
 
 # Install prometheus-node-exporter
-./07_01_install_prometheus.sh
+#./07_01_install_prometheus.sh
