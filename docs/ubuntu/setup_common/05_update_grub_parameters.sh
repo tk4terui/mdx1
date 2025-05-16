@@ -2,6 +2,7 @@
 set -ex
 
 # Kernel Parameter to disable predictive network interface naming
+# If you configured the network manager by the predictive naming, you need the reconfiguration by the device name.
 KERNEL_PARAMETER="net.ifnames=0"
 
 # Change grub parameters
