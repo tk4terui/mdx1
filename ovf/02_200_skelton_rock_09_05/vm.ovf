@@ -10,7 +10,7 @@
   </DiskSection>
   <VirtualSystem ovf:id="vm">
     <Info>A virtual machine</Info>
-    <Name>021100_skelton_rock_09_05</Name>
+    <Name>02_200_skelton_rock_09_05</Name>
     <OperatingSystemSection ovf:id="101" vmw:osType="otherLinux64Guest">
       <Info>The kind of installed guest operating system</Info>
     </OperatingSystemSection>

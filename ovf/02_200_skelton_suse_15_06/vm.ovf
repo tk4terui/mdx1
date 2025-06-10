@@ -10,7 +10,7 @@
   </DiskSection>
   <VirtualSystem ovf:id="vm">
     <Info>A virtual machine</Info>
-    <Name>021100_skelton_suse_15_06</Name>
+    <Name>02_200_skelton_suse_15_06</Name>
     <OperatingSystemSection ovf:id="83" vmw:osType="opensuse64Guest">
       <Info>The kind of installed guest operating system</Info>
     </OperatingSystemSection>

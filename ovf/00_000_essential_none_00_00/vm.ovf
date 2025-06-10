@@ -10,7 +10,7 @@
   </DiskSection>
   <VirtualSystem ovf:id="vm">
     <Info>A virtual machine</Info>
-    <Name>000000_essential_none_00_00</Name>
+    <Name>00_000_essential_none_00_00</Name>
     <OperatingSystemSection ovf:id="1" vmw:osType="otherGuest">
       <Info>The kind of installed guest operating system</Info>
     </OperatingSystemSection>

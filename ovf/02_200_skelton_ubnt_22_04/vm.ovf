@@ -10,7 +10,7 @@
   </DiskSection>
   <VirtualSystem ovf:id="vm">
     <Info>A virtual machine</Info>
-    <Name>021100_skelton_ubnt_22_04</Name>
+    <Name>02_200_skelton_ubnt_22_04</Name>
     <OperatingSystemSection ovf:id="94" vmw:osType="ubuntu64Guest">
       <Info>The kind of installed guest operating system</Info>
     </OperatingSystemSection>
